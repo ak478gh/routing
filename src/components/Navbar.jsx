@@ -1,11 +1,15 @@
 
-import {Link, NavLink} from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
+import { AuthContext } from '../Context/AuthContextProvider';
+import { useContext } from 'react';
 
 export default function Navbar() {
 
+    const {isAuth, logout} = useContext(AuthContext);
+
     const style = {
         backgroundColor: 'pink',
-        padding: '10px',
+        padding: '10px 0px',
         display: 'flex',
         justifyContent: 'Space-around',
         textDecoration: 'none'
@@ -25,6 +29,7 @@ export default function Navbar() {
         {path:'/contact', title:'Contact'},
         {path:'/about', title:'About'},
         {path:'/users', title:'Users'},
+        {path:'/login', title:'Login'},
     ];
 
     return (
@@ -38,6 +43,8 @@ export default function Navbar() {
                     {link.title}
                 </NavLink>
             })}
+            <p>Is User Authenticated: {isAuth ? 'Yes' : 'No'}</p>
+            <button disabled={!isAuth} onClick={()=> logout()}>Logout</button>
         </div>
     )
 }

@@ -5,16 +5,34 @@ import Contact from '../pages/Contact'
 import Users from '../pages/Users';
 import SingleUserPage from '../pages/SingleUserPage';
 import NotFound from '../pages/NotFound';
+import PrivateRoutes from './PrivateRoutes';
+import Login from '../pages/Login';
 
 export default function AllRoutes() {
     return (
         <>
         <Routes>
+            {/* public */}
             <Route path='/' element={<Home/>}/>
+            {/* public */}
             <Route path='/about' element={<About/>}/>
+            {/* public */}
             <Route path='/contact' element={<Contact/>}/>
-            <Route path='/users' element={<Users/>}/>
-            <Route path='/users/:user_id' element={<SingleUserPage/>}/>
+            {/* public */}
+            <Route path='/login' element={<Login/>}/>
+            {/* private */}
+            <Route path='/users' element={
+                <PrivateRoutes>
+                    <Users/>
+                </PrivateRoutes>
+            } />
+            {/* private */}
+            <Route path='/users/:user_id' element={
+                <PrivateRoutes>
+                    <SingleUserPage/>
+                </PrivateRoutes>
+            }/>
+
             <Route path='*' element={<NotFound/>}/>
         </Routes>
         </>
