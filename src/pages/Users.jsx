@@ -64,7 +64,7 @@ export default function Users() {
                     <Link to={`${item.id}`}>more info</Link>
                     </div>
             })}
-            <button onClick={()=> handleChangePage(-1)} disabled={page==1}>PREV</button>
+            <button onClick={()=> handleChangePage(-1)} disabled={page===1}>PREV</button>
             <button>{page}</button>
             <button onClick={()=> handleChangePage(1)}>NEXT</button>
         </>
