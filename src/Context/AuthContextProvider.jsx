@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 // 2. Provide
 export default function AuthContextProvider({children}) {
 
-    const [isAuth, setIsAuth] = useState(true);
+    const [isAuth, setIsAuth] = useState(false);
 
     function login() {
         setIsAuth(true);
